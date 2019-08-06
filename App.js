@@ -76,4 +76,12 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
   }
+
+  tilex {
+    color: "red",
+    fontsize: 10;
+    flex: 1,
+    alignitems: "center",
+    justifyContent: "center",
+  }
 });
