@@ -18,42 +18,69 @@ export default class App extends React.Component {
     }
   }
 
-  ComponentDidMount() {
+  componentDidMount() {
     this.initializeGame();
   }
 
-  initializeGame = () => {
+  initializeGame ()  {
     this.setState({gameState:
       [
         [0, 0, 0],
         [0, 0, 0],
         [0, 0, 0]
       ],
+      currentPlayer: 1,
     });
   }
 
   // Win or lose ... Returns 1 if Player 1 won, -1 if Player 2 won, or  0 if no one has won,
   getWinner = () => {
-    const seq_tiles = 3;
+    const SEQ_TILES = 3;
     var arr = this.state.gameState;
     var sum;
 
     // Check sequence for row/ col 111 L-R, Up-Dn or Diag 
-    for (var i = 0; 1 < seq_tiles; i++) {
+    for (var i = 0; 1 < SEQ_TILES; i++) {
       sum = arr[i][0] + arr[i][1] + arr[i][2];
       if (sum == 3) {return -1; }
     }
 
+    // Check seq for col/
+    for (var i = 0; 1 < SEQ_TILES; i++) {
+      sum = arr[0][i] + arr[1][i] + arr[2][i];
+      if (sum == 3) {return -1; }
+    }
+
+      // Check for seq diag
+      
+      sum = arr[0][0] + arr[1][1] + arr[2][2];
+      if (sum == 3) {return 1; }
+      else if (sum = -3) {return -1; }
+
+      sum = arr[2][0] + arr[1][1] + arr[0][2];
+      if (sum == 3) {return 1; }
+      else if (sum = -3) {return -1; }
+
+      // no winner 
+      return 0;
+
   }
 
+
+
   onTilePress = (row, col) => {
+
+  onNewGamePress = () => {
+    this.initializeGame();
+  }
+
 
     // constraint
     var value = this.state.gameState[row][col];
     if (value !== 0) { return; }
 
     // current player
-    var currentPlayer = this.state.currentPlayer;
+    var {currentPlayer} = this.state.currentPlayer;
 
     // Set the correct tile
 
@@ -62,18 +89,29 @@ export default class App extends React.Component {
     this.setState({gameState: arr});
 
     // Switch to currentPlayer
-    var nextPlayer = (currentPlayer == 1) ? -1 : 1;
+    var nextPlayer = (this.state.currentPlayer === 1) ? -1 : 1;
     this.setState({currentPlayer: nextPlayer});
+
+    // Winner
+    var winner = this.getWinner();
+    if (winner == 1) {
+      Alert.alert("Player One is the Winner");
+      this.initializeGame();
+    } else if (winner == -1) {
+      Alert.alert("Player Two is the Winner");
+      this.initializeGame();
+    }
+    
 
   }
   renderIcon = (row, col) => {
-    var value = this.state.gameState[row][col];
+    const value = this.state.gameState[row][col];
     switch (value) {
       case 1:
         return <Icon name="close" style={styles.tileX} />;
         case -1:
           return <Icon name="circle-outline" style={styles.tileO} />;
-          default: return <View />;
+          default: <View />;
     }
   }
 
@@ -126,6 +164,10 @@ export default class App extends React.Component {
         {this.renderIcon(2, 2)}
         </TouchableOpacity>
       </View>
+
+      <View style=({paddingTop:50}) />
+
+      <Button title="New Game" onPress={this.onNewGamePress}</Button>
 
   
     </View>
