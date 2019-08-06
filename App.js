@@ -4,7 +4,28 @@ import {MaterialCommunityIcons as Icon } from "react-native-vector-icons";
 
 export default class App extends React.Component {
 
-  
+  constructor(props) {
+    super(props);
+// gameState
+    this.state = {
+      gameState: [
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0]
+      ],
+      // current player
+      currentPlayer: 1,
+
+    }
+  }
+
+  ComponentDidMount() {
+    this.initisalizeGame();
+  }
+
+  initializeGame = () => {
+    
+  }
   render() {
     return (
     <View style={styles.container}>
