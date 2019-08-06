@@ -42,7 +42,7 @@ export default class App extends React.Component {
           return <Icon name="circle-outline" style={styles.tileO} />;
           default: return <View />;
     }
-  }
+  };
 
   // Returns 1 if Player 1 won, -1 if Player 2 won, or a 0 if no one has won,
   render() {
@@ -51,10 +51,10 @@ export default class App extends React.Component {
 
     <View style={{flexDirection: "row"}}>
       <View style={[styles.tile, (borderLeftWidth: 0, borderTopWidth: 0, )]} />
-      <Icon name="close" style=(styles.tileX) />
+      {this.renderIcon(0, 0)}
       </View>
       <View style={[styles.tile, (borderTopWidth: 0, )]} />
-      <Icon name="circle-outline" style=(styles.tileO) />
+      {this.renderIcon(0, 1)}
       <View style={[styles.tile, (borderTopWidth: 0, borderRightWidth: 0, )]} />
     </View>
 
