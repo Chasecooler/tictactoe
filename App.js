@@ -42,7 +42,10 @@ export default class App extends React.Component {
 
     <View style={{flexDirection: "row"}}>
       <View style={[styles.tile, (borderLeftWidth: 0, borderTopWidth: 0, )]} />
+      <Icon name="close" style=(styles.tileX) />
+      </View>
       <View style={[styles.tile, (borderTopWidth: 0, )]} />
+      <Icon name="circle-outline" style=(styles.tileO) />
       <View style={[styles.tile, (borderTopWidth: 0, borderRightWidth: 0, )]} />
     </View>
 
@@ -77,11 +80,20 @@ const styles = StyleSheet.create({
     height: 100,
   }
 
-  tilex {
+  tileX: {
     color: "red",
     fontsize: 10;
     flex: 1,
-    alignitems: "center",
+    alignItems: "center",
     justifyContent: "center",
+  }
+
+  tileO: {
+     color: "green",
+    fontsize: 10;
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+
   }
 });
