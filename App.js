@@ -33,9 +33,23 @@ export default class App extends React.Component {
   }
 
   onTilePress = (row, col) => {
+
+    // constraint
+    var value = this.state.gameState[row][col];
+    if (value !== 0) { return; }
+
+    // current player
     var currentPlayer = this.state.currentPlayer;
 
+    // Set the correct tile
+
     var arr = this.state.gameState.slice();
+    arr[row][col] = currentPlayer;
+    this.setState({gameState: arr});
+
+    // Switch to currentPlayer
+    var nextPlayer = (currentPlayer == 1) ? -1 : 1;
+    this.setState({currentPlayer: nextPlayer});
 
   }
   renderIcon = (row, col) => {
