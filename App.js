@@ -35,6 +35,8 @@ export default class App extends React.Component {
   onTilePress = (row, col) => {
     var currentPlayer = this.state.currentPlayer;
 
+    var arr = this.state.gameState.slice();
+
   }
   renderIcon = (row, col) => {
     var value = this.state.gameState[row][col];
