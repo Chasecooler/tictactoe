@@ -20,32 +20,42 @@ export default class App extends React.Component {
   }
 
   ComponentDidMount() {
-    this.initisalizeGame();
+    this.initializeGame();
   }
 
   initializeGame = () => {
+    this.setState({gameState:
+      [
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0]
+      ],
+      currentPlayer: 1,
     
+    });
   }
+
+  // Returns 1 if Player 1 won, -1 if Player 2 won, or a 0 if no one has won,
   render() {
     return (
     <View style={styles.container}>
 
     <View style={{flexDirection: "row"}}>
-      <View style={[styles.tile, (borderLeftWidth: 0, borderTopWidth: 0)]} />
-      <View style={[styles.tile, ()]} />
-      <View style={[styles.tile, ()]} />
+      <View style={[styles.tile, (borderLeftWidth: 0, borderTopWidth: 0, )]} />
+      <View style={[styles.tile, (borderTopWidth: 0, )]} />
+      <View style={[styles.tile, (borderTopWidth: 0, borderRightWidth: 0, )]} />
     </View>
 
     <View style={{flexDirection: "row"}}>
+      <View style={[styles.tile, (borderLeftWidth: 0, )]} />
       <View style={[styles.tile, ()]} />
-      <View style={[styles.tile, ()]} />
-      <View style={[styles.tile, ()]} />
+      <View style={[styles.tile, (borderRightWidth: 0,)]} />
     </View>
 
     <View style={{flexDirection: "row"}}>
-      <View style={[styles.tile, ()]} />
-      <View style={[styles.tile, ()]} />
-      <View style={[styles.tile, ()]} />
+      <View style={[styles.tile, (borderBottomWidth: 0, borderLeftWidth: 0,)]} />
+      <View style={[styles.tile, (borderBottomWidth: 0, )]} />
+      <View style={[styles.tile, (borderBottomWidth: 0, borderRightWidth: 0, )]} />
     </View>
 
 
@@ -62,7 +72,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   tile: {
-    borderWidth: 1,
+    borderWidth: 10,
     width: 100,
     height: 100,
   }
