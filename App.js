@@ -15,7 +15,6 @@ export default class App extends React.Component {
       ],
       // current player
       currentPlayer: 1,
-
     }
   }
 
@@ -31,8 +30,18 @@ export default class App extends React.Component {
         [0, 0, 0]
       ],
       currentPlayer: 1,
-    
     });
+  }
+
+  renderIcon = (row, col) => {
+    var value = this.state.gameState[row][col];
+    switch (value) {
+      case 1:
+        return <Icon name="close" style={styles.tileX} />;
+        case -1:
+          return <Icon name="circle-outline" style={styles.tileO} />;
+          default: return <View />;
+    }
   }
 
   // Returns 1 if Player 1 won, -1 if Player 2 won, or a 0 if no one has won,
