@@ -32,6 +32,20 @@ export default class App extends React.Component {
     });
   }
 
+  // Win or lose ... Returns 1 if Player 1 won, -1 if Player 2 won, or  0 if no one has won,
+  getWinner = () => {
+    const seq_tiles = 3;
+    var arr = this.state.gameState;
+    var sum;
+
+    // Check sequence for row/ col 111 L-R, Up-Dn or Diag 
+    for (var i = 0; 1 < seq_tiles; i++) {
+      sum = arr[i][0] + arr[i][1] + arr[i][2];
+      if (sum == 3) {return -1; }
+    }
+
+  }
+
   onTilePress = (row, col) => {
 
     // constraint
@@ -63,7 +77,7 @@ export default class App extends React.Component {
     }
   }
 
-  // Returns 1 if Player 1 won, -1 if Player 2 won, or a 0 if no one has won,
+  
   render() {
     return (
     <View style={styles.container}>
