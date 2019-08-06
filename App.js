@@ -29,7 +29,6 @@ export default class App extends React.Component {
         [0, 0, 0],
         [0, 0, 0]
       ],
-      currentPlayer: 1,
     });
   }
 
@@ -49,29 +48,42 @@ export default class App extends React.Component {
     return (
     <View style={styles.container}>
 
-    <View style={{flexDirection: "row"}}>
-      <View style={[styles.tile, (borderLeftWidth: 0, borderTopWidth: 0, )]} />
-      {this.renderIcon(0, 0)}
+      <View style={{flexDirection: "row", alignItems: "center", justifyContent: "center"}}>
+        <View style={[styles.tile, (borderLeftWidth: 0, borderTopWidth: 0, )]}>
+        {this.renderIcon(0, 0)}
+        </View>
+        <View style={[styles.tile, (borderTopWidth: 0, )]} >
+        {this.renderIcon(0, 1)}
+        </View>
+        <View style={[styles.tile, (borderTopWidth: 0, borderRightWidth: 0, )]} >
+        {this.renderIcon(0, 2)}
+        </View>
       </View>
-      <View style={[styles.tile, (borderTopWidth: 0, )]} />
-      {this.renderIcon(0, 1)}
-      <View style={[styles.tile, (borderTopWidth: 0, borderRightWidth: 0, )]} />
-    </View>
 
-    <View style={{flexDirection: "row"}}>
-      <View style={[styles.tile, (borderLeftWidth: 0, )]} />
-      <View style={[styles.tile, ()]} />
-      <View style={[styles.tile, (borderRightWidth: 0,)]} />
-    </View>
+      <View style={{flexDirection: "row"}}>
+        <View style={[styles.tile, (borderLeftWidth: 0, )]} >
+        {this.renderIcon(1, 0)}
+        </View>
+        <View style={[styles.tile, ()]} >
+        {this.renderIcon(1, 1)}
+        </View>
+        <View style={[styles.tile, (borderRightWidth: 0, )]}>
+        {this.renderIcon(1, 2)}
+        </View>
+      </View>
 
-    <View style={{flexDirection: "row"}}>
-      <View style={[styles.tile, (borderBottomWidth: 0, borderLeftWidth: 0,)]} />
-      <View style={[styles.tile, (borderBottomWidth: 0, )]} />
-      <View style={[styles.tile, (borderBottomWidth: 0, borderRightWidth: 0, )]} />
-    </View>
+      <View style={{flexDirection: "row"}}>
+        <View style={[styles.tile, (borderBottomWidth: 0, borderLeftWidth: 0, )]}>
+        {this.renderIcon(2, 0)}
+        </View>
+        <View  style={[styles.tile, (borderBottomWidth: 0, )]}>
+        {this.renderIcon(2, 1)}
+        </View>
+        <View style={[styles.tile, (borderBottomWidth: 0, borderRightWidth: 0, )]}>
+        {this.renderIcon(2, 2)}
+        </View>
+      </View>
 
-
-      <Text>Open up App.js to start working on your app!</Text>
     </View>
   );
 }
@@ -93,16 +105,14 @@ const styles = StyleSheet.create({
     color: "red",
     fontsize: 10;
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+   
   }
 
   tileO: {
      color: "green",
     fontsize: 10;
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+   
 
   }
 });
